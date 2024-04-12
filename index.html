@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cosy Cask</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google fonts vvv -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Glass+Antiqua&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-screen">
+        <img draggable="false" src="Images/title_flourish_bottom_white.png">
+        <div class="load-content">
+            <h1 class="load-title glass-antiqua-regular">Loading</h1>
+            <h1 class="load-title animated-bounce bounce1 glass-antiqua-regular">.</h1>
+            <h1 class="load-title animated-bounce bounce2 glass-antiqua-regular">.</h1>
+            <h1 class="load-title animated-bounce bounce3 glass-antiqua-regular">.</h1>
+        </div>
+        <img draggable="false" src="Images/title_flourish_bottom_white.png" alt="">
+    </div>
+    <img class="background" src="Images/rainbound_keep.gif" draggable="false">
+    <div id="blob"></div>
+    <div id="blur"></div>
+    <!-- A filter div for blurring everything behind it, namely #blob -->
+
+    <!-- Sidebar -->
+    <section class="sidebar-btn dark-border">
+        <img draggable="false" src="Images/bard.png">
+    </section>
+    <audio id="audioElement" src="Sounds/mandolin.wav" preload="auto"></audio>
+    
+    <section class="sidebar-container">
+        <div class="sidebar-flex">
+            <div class="base-container content-container grey-border sidebar-item youtube-container">
+                <iframe id="videoPlayer" class="video-box dark-border" width="96%" height="86%" src="https://www.youtube.com/embed/Q84Td36Tpys?si=CVPVroZq-YveMTsr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="bard-selection-container base-container content-container grey-border sidebar-item fidget-container glass-antiqua-regular">
+                <header>Bard's Selection</header>
+                <ul class="song-list">
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/SYMoZ70eGPc?si=db0aIXlgFPOgFXB7">
+                        <p class="song-name">Aindulmedir - Star Lore (2023)</p>
+                        <p class="song-genre">Dark Ambient, Dungeon Synth</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/Q84Td36Tpys?si=CVPVroZq-YveMTsr">
+                        <p class="song-name">Castlesiege - The Council of Trees (2023)</p>
+                        <p class="song-genre">Dungeon Synth</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/kMYIPNEua80?si=ots-VVcshMO50ASn">
+                        <p class="song-name">Cobalt Blues - Critical Role LoFi</p>
+                        <p class="song-genre">LoFi</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/O738AtAwacI?si=xgBsStQWvN-KahLN">
+                        <p class="song-name">Cozy Tavern - Music & Ambience REMASTERED</p>
+                        <p class="song-genre">Ambient</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/38zi6aqnoAU?si=rl8zL3fGH0ituK1P">
+                        <p class="song-name">Cozy Tavern on a Rainy Day 🌧️</p>
+                        <p class="song-genre">Tavern Music</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/u_cRsSFvHBQ?si=zZrk1FA_tm0_8p2W">
+                        <p class="song-name">Destiny and Dead People Tea - Critical Role</p>
+                        <p class="song-genre">LoFi</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/duJBjG0UafM?si=TNodjD0C_Ux_URXr">
+                        <p class="song-name">DIM - Compendium I (2017)</p>
+                        <p class="song-genre">Dungeon Synth</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/8k0QPEQxr24?si=SzISe0Hel_2MUcfa">
+                        <p class="song-name">Elden Ring (Digital Soundtrack) | Full Album</p>
+                        <p class="song-genre">OST</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/a3_qzIKgoas?si=NBKOJAdSRs9h7r30">
+                        <p class="song-name">Fathoms - Critical Role</p>
+                        <p class="song-genre">LoFi</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/gsu8S9Pvbio?si=5eQnFNBMV3b0jKBf">
+                        <p class="song-name">Mighty Vibes Vol 2: Chill Tunes to Study/Transcribe Magic To</p>
+                        <p class="song-genre">LoFi</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/8xz9s_-sO1I?si=U8NzMyEfUKAgLAOi">
+                        <p class="song-name">Mighty Vibes Vol 3: Chill Tunes to Drink Tea/Meditate To</p>
+                        <p class="song-genre">LoFi</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/L6VWwnbjE_Y?si=SLbvqfubOiHRr1bt">
+                        <p class="song-name">Nanae Yoshimura - The Art of Koto Vol. 2 - 吉村七重</p>
+                        <p class="song-genre">Japanese Folk</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/i5xjGB1qo7M?si=pzUDALqgPQqFLg13">
+                        <p class="song-name">Pokémon Black and White - Full OST</p>
+                        <p class="song-genre">OST (2:16:25 for a good time)</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/iLd1OoCQNLs?si=ZuPO-irqvb4YVUHI">
+                        <p class="song-name">Pokémon Emerald - Full Soundtrack [XQ]</p>
+                        <p class="song-genre">OST</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/ztP1RknUpd4?si=5_O3WjZITRNCg0Hg">
+                        <p class="song-name">Preparing for a Quest</p>
+                        <p class="song-genre">Tavern Music</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/NJuSStkIZBg?si=JpH1Jgbensog4E1K">
+                        <p class="song-name">Rainy Jazz Cafe - Slow Jazz Music in Coffee Shop Ambience</p>
+                        <p class="song-genre">Jazz</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/yUgx7s0VPs8?si=HzpLfvkrev_RLx7K">
+                        <p class="song-name">Relaxing Forest Rain Sounds</p>
+                        <p class="song-genre">Ambient</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/57jIlw6HmCE?si=i0TMJzmuii5oPoeY">
+                        <p class="song-name">Shadow of the Colossus Remake FULL Soundtrack</p>
+                        <p class="song-genre">OST</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/BITz7wOs4J4?si=iYMQpNbMZWVKoQzm">
+                        <p class="song-name">Sombre Arcane - Realmsong (2021)</p>
+                        <p class="song-genre">Dungeon Synth</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/5uLy6QIAK_I?si=MxcyHg4nl5bJ-nJj">
+                        <p class="song-name">Western Ambience | Red Dead Redemption Inspired 1 Hour Music & Nature</p>
+                        <p class="song-genre">Ambient</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/leIK1aUOF-Q?si=3wr1ZKAk1xnTRTpv">
+                        <p class="song-name">The Best of Paganini - Devil's Violinist</p>
+                        <p class="song-genre">Classical</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/POWp4UNrDQM?si=41Ilv5vaRU19ifEv">
+                        <p class="song-name">Ziggurath - Tales from Southern Realms</p>
+                        <p class="song-genre">Dungeon Synth</p>
+                    </li>
+                    <li class="song-row dark-border" data-src="https://www.youtube.com/embed/4Ud21FEaUTQ?si=fa_uDu-tnt2MbF22">
+                        <p class="song-name">Ziggurath - True North (2024)</p>
+                        <p class="song-genre">Dungeon Synth</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <main class="glass-antiqua-regular">
+
+        <!-- Signpost -->
+        <header class="signpost base-container grey-border">
+            <img class="flourish-top" src="Images/title_flourish_top_white.png" draggable="false">
+            <h1>The Cosy Cask Tavern</h1>
+            <img class="flourish-bottom" src="Images/title_flourish_bottom_white.png" draggable="false">
+        </header>
+
+        <!-- Quest board -->
+        <section class="quest-section base-container content-container grey-border">
+            <header class="content-title"><img class="content-title-divider" src="Images/title_flourish_top_white.png" draggable="false"> Quest Board</header>
+            <img class="border-flourish border-flourish-left" src="Images/border_flourish_left.png" draggable="false">
+            <img class="border-flourish border-flourish-right" src="Images/border_flourish_right.png" draggable="false">
+            <div class="quest-content-box">
+                <div class="input-row">
+                    <input class="glass-antiqua-regular" type="text" placeholder="Add your quest . . .">
+                    <button class="quill-btn dark-border" onclick="addQuest()"><img src="Images/quill-drawing-a-line.png" draggable="false"></button>
+                </div>
+                <ul class="list-container">
+                    <!-- <li class="checked">Task 1</li> -->
+                    <!-- <li>
+                        <div class="checked"></div>
+                        <p></p>
+                        <span></span>
+                    </li> -->
+                </ul>
+            </div>
+            <img class="background-symbol compass-symbol" src="Images/compass.png">
+        </section>
+
+        <!-- 3 Part Grid -->
+        <section class="grid-container">
+            <!-- Canvas -->
+            <section class="draw-container base-container grey-border content-container grid-container-item">
+                <header class="content-title"><img class="content-title-divider small-divider" src="Images/title_flourish_top_white.png" draggable="false">Sketchpad</header>
+                <canvas class="draw" id="responsiveCanvas" height="270">Your browser doesn't support canvas</canvas>
+                <div class="canvas-row">
+                    <button class="colour-button black"></button>
+                    <button class="colour-button white"></button>
+                    <button class="colour-button red"></button>
+                    <button class="colour-button blue"></button>
+                    <button class="colour-button yellow"></button>
+                    <button class="colour-button green"></button>
+                    <button class="colour-button purple"></button>
+                    <button class="colour-button orange"></button>
+                </div>
+                <div class="canvas-row">
+                    <button class="clear glass-antiqua-regular">Clear</button>
+                    <input type="range" class="radius-slider" min="1" max="50" value="2" step="1">
+                </div>
+            </section>
+            
+            <!-- Notes -->
+            <section class="notes-container base-container grey-border content-container grid-container-item">
+                <header class="content-title"><img class="content-title-divider small-divider" src="Images/title_flourish_top_white.png" draggable="false">Notes</header>
+                <button class="quill-btn note-button dark-border"><img src="Images/quill-drawing-a-line.png" draggable="false"></button>
+                <img class="background-symbol scroll-symbol" draggable="false" src="Images/scroll-symbol.svg">
+                <div class="note-content-box"></div>
+            </section>
+
+            <!-- Adventure -->
+            <section class="adventure-container base-container grey-border content-container grid-container-item">
+                <header class="content-title"><img class="content-title-divider small-divider" src="Images/title_flourish_top_white.png" draggable="false">Adventure</header>
+                <ul class="adventure-grid">
+                    <li class="adventure-grid-item tavern-interior">
+                        <div class="dark-border"></div>
+                        <p>Tavern Interior</p>
+                    </li>
+                    <li class="adventure-grid-item silent-forest">
+                        <div class="dark-border"></div>
+                        <p>Silent Forest</p>
+                    </li>
+                    <li class="adventure-grid-item elvish-falls">
+                        <div class="dark-border"></div>
+                        <p>Elvish Falls</p>
+                    </li>
+                    <li class="adventure-grid-item rainbound-keep">
+                        <div class="dark-border"></div>
+                        <p>Rainkeep</p>
+                    </li>
+                </ul>
+            </section>
+        <!-- Grid Container End vvv -->
+        </section>
+
+        <!-- Fidget Magic -->
+        <!-- <section class="base-container content-container fidget-container grey-border">
+            <header class="content-title"><img class="content-title-divider" src="Images/title_flourish_top_white.png" draggable="false">Fidget Weave</header>
+                <div class="spline-viewer-container">
+                    <spline-viewer class="spline-viewer" loading-anim-type="spinner-small-light" url="https://prod.spline.design/CL4SMQP6YocHEd8K/scene.splinecode"></spline-viewer>
+                </div>
+        </section> -->
+    </main>
+
+
+
+    <script defer src="script.js"></script>
+    <script defer type="module" src="https://unpkg.com/@splinetool/viewer@1.0.87/build/spline-viewer.js"></script>
+</body>
+</html>

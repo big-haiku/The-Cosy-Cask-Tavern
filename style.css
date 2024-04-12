@@ -1,0 +1,730 @@
+/* Global */
+:root {
+  /* --glow-rgb: 239 42 201; */
+  --brown: #3c2f25;
+  --light-brown: rgba(79, 70, 57, 0.794);
+  --border-grey: rgb(255, 255, 255);
+  --border-dark: rgb(36, 12, 1);
+  --gold: rgb(245, 233, 216);
+}
+html{
+    font-size: 62.5%;
+    color:rgb(236, 236, 236);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: black;
+    height: 100vh;
+    user-select: none;
+  }
+.background{
+    position: fixed;
+    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    opacity: 0.8;
+}
+/* img{
+  -webkit-user-drag: none;
+	user-drag: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+  user-select: none;
+} */
+
+/* Fonts */
+.glass-antiqua-regular {
+  font-family: "Glass Antiqua", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.forum-regular {
+  font-family: "Forum", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Content */
+/* General Content Styles */
+main{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45vw;
+  max-width: 100rem;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 5rem auto;
+  min-width: 450px;
+}
+    .base-container{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: var(--brown);
+      margin-bottom: 5rem;
+      opacity: 0.9;
+      align-items: center;
+      box-shadow: black 0 0 4rem 1rem;
+      width: 100%;
+    }
+        .content-container{
+          border-radius: 5rem;
+        }
+            /* .content-container::after{
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              box-shadow: black 0 0 8rem 1rem;
+              width: 100%;
+              height: 100%;
+              border-radius: 5rem;
+              z-index: -1;
+            } */
+            .content-title{
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              font-size: 4.5rem;
+              padding: 2rem;
+            }
+                .content-title-divider{
+                  position: absolute;
+                  width: 40rem;
+                  top: 5.4rem;
+                  left: 50%;
+                  transform: translate(-50%);
+                }
+                .small-divider{
+                  width: 100%;
+                  max-width: 40rem;
+                }
+            .border-flourish{
+              height: 36rem;
+              position: absolute;
+              top: 50%;
+              transform: translate(0, -50%);
+            }
+            .border-flourish-left{
+                left: 2rem;
+            }
+            .border-flourish-right{
+                right: 2rem;
+            }
+            
+.grey-border{
+  border: 0.3rem solid var(--border-grey);
+}
+.dark-border{
+  border: 0.2rem solid var(--border-dark);
+
+}
+.quill-btn{
+  width: 5rem;
+  height: 5rem;
+  opacity: 0.9;
+  border-radius: 3rem;
+  cursor: pointer;
+  z-index: 99;
+}
+    .quill-btn img{
+      width: 65%;
+      height: 65%;
+    }
+.background-symbol{
+    position: absolute;
+    opacity: 0.06;
+    aspect-ratio: 1 / 1;
+    filter: brightness(85%);
+}
+.sub-container{
+  display: flex;
+  font-size: 2.5rem;
+  position: relative;
+  border-radius: 2rem;
+  background: var(--light-brown);
+  padding: 1.5rem;
+  margin: 0.5% 0;
+  cursor: pointer;
+}
+span{
+  background-image: url(Images/close.png);
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  height: 3.3rem;
+  opacity: 0.8;
+}
+
+/* JS Background Effects */
+.background.fade-out{
+  transition: opacity 0.5s ease; /* Set the transition for opacity change */
+  opacity: 0; /* Fade out */
+}
+.background.fade-in{
+  transition: opacity 0.5s ease; /* Set the transition for opacity change */
+  opacity: 0.8; /* Fade in */
+}
+.brightness-filter{
+  filter: brightness(150%); /* Apply brightness filter */
+}
+
+/* Loading Screen */
+
+.loading-screen{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 3rem;
+  position: fixed;
+  background: var(--brown);
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+    .loading-screen img:first-child{
+      rotate: 180deg;
+    }
+    .loading-screen img:last-child{
+      margin-top: 1rem;
+    }
+    .load-content{
+      display: flex;
+      column-gap: 2.3rem;
+    }
+        .load-title{
+          font-size: 12rem;
+          color: whitesmoke;
+          text-shadow:
+            /* 1px 1px 0 white,
+            -1px 1px 0 white,
+            -1px -1px 0 white,
+            1px -1px 0 white; */
+        }
+        .animated-bounce{
+          transition: transform 0.5s ease;
+        }
+        @keyframes bounce {
+          0%, 100% {
+              transform: translateY(0);
+          }
+          50% {
+              transform: translateY(-10px); /* Adjust the value to control the bounce height */
+          }
+        }
+            /* Apply the bounce animation to each dot with a different delay */
+            .load-title.animated-bounce {
+                animation: bounce 1s infinite; /* Adjust the duration as desired */
+            }
+            
+            .load-title.bounce1 {
+                animation-delay: 0s; /* No delay for the first dot */
+            }
+            
+            .load-title.bounce2 {
+                animation-delay: 0.2s; /* Delay of 0.2 seconds for the second dot */
+            }
+            
+            .load-title.bounce3 {
+                animation-delay: 0.4s; /* Delay of 0.4 seconds for the third dot */
+            }
+
+/* Sidebar */
+.sidebar-btn{
+  position: fixed;
+  width: 8rem;
+  height: 8rem;
+  background: var(--brown);
+  border-radius: 50%;
+  overflow: hidden;
+  opacity: 0.9;
+  top: 3rem;
+  left: 2%;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: black 0 0 5rem 1rem;
+  transition: rotate 0.2s ease;
+}
+    .sidebar-btn.rotate{
+      rotate: 360deg;
+    }
+    .sidebar-btn img{
+      max-height: 100%;
+      aspect-ratio: 1 / 1;
+      opacity: 0.9;
+    }
+.sidebar-container{
+  position: fixed;
+  padding-top: 26.9rem;
+  width: 23vw;
+  max-width: ;
+  height: calc(100vh - 5rem);;
+  left: -30%;
+  transition: left 0.3s ease;
+}
+    .sidebar-container.open{
+      left: 2%;
+    }
+    .sidebar-flex{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+        .sidebar-item{
+          width: 100%;
+          height: 50%;
+        }
+            .sidebar-item:last-child{
+              margin-bottom: 0;
+            }
+        .youtube-container{
+          align-items: center;
+          justify-content: center;
+        }
+            .video-box{
+              border-radius: 4.3rem;
+            }
+        .bard-selection-container{
+        }
+            .bard-selection-container header{
+              font-size: 3.5rem;
+              margin-top: 1rem;
+              text-decoration: underline;
+            }
+            .song-list{
+              list-style: none;
+              overflow: scroll;
+              margin: 2% 5%;
+              padding-right: 2%;
+            }
+                .song-row{
+                  display: flex;
+                  column-gap: 1rem;
+                  font-size: 2rem;
+                  text-align: center;
+                  align-items: center;
+                  cursor: pointer;
+                  background: var(--light-brown);
+                  border-radius: 2rem;
+                  padding: 1rem;
+                  margin: 0.5rem;
+                }
+                    .song-row p{
+                      display: inline-block;
+                    }
+                    .song-name{
+                      border-right: 0.2rem solid var(--border-dark);
+                      width: 70%;
+                      padding-right: 4%;
+                    }
+                    .song-genre{
+                      width: 30%;
+                      margin-left: 2%;
+                    }
+
+/* Signpost */
+.signpost{
+  max-width: fit-content;
+  padding: 2rem 5rem;
+  border-radius: 10rem;
+}
+    /* .signpost::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-shadow: black 0 0 10rem 1rem;
+      width: 100%;
+      height: 100%;
+      border-radius: 10rem;
+      z-index: -1;
+    } */
+    .flourish-top{
+      max-width: 50rem;
+      width: 100%;
+    }
+    .flourish-bottom{
+      max-width: 44rem;
+      padding-top: 0.2rem;
+      width: 100%;
+    }
+    .signpost h1{
+      font-size: 5.5rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+/* Quest Board */
+    .quest-content-box{
+      flex-grow: 1;
+      width: 100%;
+      padding: 1.5rem 9rem;
+      z-index: 1;
+    }
+        .input-row{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 1rem auto;
+          max-width: 39rem;
+          max-height: 5rem;
+        }
+            .input-row input{
+              font-size: 3rem;
+              padding: 1rem;
+              max-width: 33rem;
+              border-radius: 2rem;
+              opacity: 0.9;
+              border: none;
+              background: whitesmoke;
+              outline: 0.2rem solid rgb(36, 12, 1);
+            }
+                .input-row input:focus{
+                  outline: 0.2rem solid rgb(126, 155, 131);
+                }
+            .list-container{
+              list-style: none;
+              display: flex;
+              flex-direction: column;
+              padding-right: 1rem;
+              margin-top: 2rem;
+              min-height: 25.9rem;
+              max-height: 45.4rem;
+              overflow-y: scroll;
+              overflow-x: hidden;
+            }
+                .list-container li{
+                  align-items: center;
+                }
+                    .list-container li p{
+                      font-size: 2.5rem;
+                      word-break: break-word;
+                      flex-grow: 1;
+                      margin: 0 1.5rem;
+                    }
+                        .list-container li.checked p{
+                          color: #555;
+                          text-decoration: line-through;
+                        }
+                    .list-container li div{
+                      background-image: url(Images/unchecked.png);
+                      background-size: cover;
+                      background-position: center;
+                      aspect-ratio: 1 / 1;
+                      height: 3rem;
+                    }
+                        .list-container li.checked div{
+                          background-image: url(../images/checked.png);
+                          filter: hue-rotate(100deg);
+                        }
+    .compass-symbol{
+      height: 20rem;
+      top: 45%;
+    }
+/* 3 Part Grid */
+.grid-container{
+  display: grid;
+  grid-template-areas:
+    "draw notes"
+    "adventure notes";
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  column-gap: 5rem;
+}
+    .draw-container{
+      grid-area: draw;
+    }
+
+    /* Canvas */
+.draw-container{
+  position: relative;
+  padding-bottom: 1rem;
+}    
+    .draw{
+      background: white;
+      height: 27rem;
+      width: 90%;
+      border-radius: 3rem;
+      margin: 2rem 1rem 0;
+    }
+    .canvas-row{
+      display: flex;
+      justify-content: space-evenly;
+      width: 90%;
+      max-width: 34rem;
+      margin-top: 1rem;
+    }
+        .clear{
+          font-size: 2.5rem;
+        }
+        .colour-button{
+          height: 3rem;
+          width: 3rem;
+          border-radius: 50%;
+          opacity: 0.9;
+        }
+        .black{
+          background: black;
+        }
+        .white{
+          background: white;
+        }
+        .red{
+          background: red;
+        }
+        .blue{
+          background: blue;
+        }
+        .yellow{
+          background: yellow;
+        }
+        .green{
+          background: green;
+        }
+        .purple{
+          background: purple;
+        }
+        .orange{
+          background: orange;
+        }
+        .radius-slider{
+          accent-color: rgb(77, 245, 77);
+        }
+
+    /* Notes */
+    .notes-container{
+      grid-area: notes;
+      min-height: 42rem;
+    }
+      .notes-container button{
+        margin-top: 1.5rem;
+      }
+      .scroll-symbol{
+        height: 20rem;
+        top: 40%;
+      }
+          .note-content-box{
+            width: 90%;
+            margin-top: 1rem;
+            overflow: scroll;
+            padding-right: 1rem;
+            max-height: 67rem;
+          }
+              .sub-note-box{
+                min-height: 10rem;
+                margin: 2% 0;
+              }
+                  .note-input{
+                    flex-grow: 1;
+                    font-size: 2.5rem;
+                    word-break: break-word;
+                    margin-right: 1rem;
+                    outline: var(--border-grey);
+                  }
+                  .sub-note-box span{
+                    align-self: center;
+                  }
+            
+
+
+    /* Adventure */
+    .adventure-container{
+      grid-area: adventure;
+      padding-bottom: 1rem;
+    }
+        .adventure-grid{
+          display: grid;
+          grid-template-areas:
+              "tavern forest"
+              "falls keep";
+          grid-template-columns: 0.4fr 0.4fr;
+          grid-template-rows: 1fr 1fr;
+          row-gap: 1.5rem;
+          column-gap: 4rem;
+          margin-top: 2.5rem;
+          width: 100%;
+          justify-content: center;
+          align-items: center;
+        }
+            .adventure-grid-item{
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              height: 11rem;
+              position: relative;
+            }
+                .adventure-grid-item div{
+                  height: 8rem;
+                  width: 105%;
+                  background-size: cover;
+                  background-position: center;
+                  border-radius: 2rem;
+                  cursor: pointer;
+                  position: absolute;
+                }
+                    .adventure-grid-item div:hover{
+                      top: -0.2rem;
+                      box-shadow: black 0 0 0.8rem 0.01rem;
+                    }
+            .tavern-interior{
+              grid-area: tavern;
+            }
+                .tavern-interior div{
+                  background-image: url(Images/cosy_tavern.webp);
+                }
+            .silent-forest{
+              grid-area: forest;
+            }
+                .silent-forest div{
+                  background-image: url(Images/quiet_pond.gif);
+                }
+            .elvish-falls{
+              grid-area: falls;
+            }
+                .elvish-falls div{
+                  background-image: url(Images/elvish_falls.gif);
+                }
+            .rainbound-keep{
+            }
+                .rainbound-keep div{
+                  background-image: url(Images/rainbound_keep.gif)
+                }
+                .adventure-grid-item p{
+                  font-size: 2.2rem;
+                  text-align: center;
+                  position: absolute;
+                  bottom: 0;
+                  width: 120%;
+                }
+
+/* Background Mouse Effect vvv */
+@keyframes rotateTransform {
+    from {
+      rotate: 0deg;
+    }
+    
+    50% {
+      scale: 1 1.5;
+    }
+    /* Intermediate keyframe that triggers halfway through an animation */
+  
+    to {
+      rotate: 360deg;
+    }
+  }
+  #blob {
+    background: linear-gradient(
+    to right,
+    rgb(255, 0, 234),
+    rgb(55, 11, 159));
+    height: 24vmax;
+    aspect-ratio: 1;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    border-radius: 50%;
+    animation: rotateTransform 20s infinite;
+    /* calls the animation specified above and gives it conditions */
+    opacity: 0.9;
+    z-index: -3;
+  }
+  #blur {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    backdrop-filter: blur(10vmax);
+    z-index: -2;
+  }
+
+/* Responsive Design */
+@media (max-width: 1572px){
+  html{
+    font-size: 55%;
+  }
+  .grid-container{
+    grid-template-areas:
+      "notes"
+      "draw"
+      "adventure";
+    grid-template-columns: 1fr;
+    }
+          .note-content-box{
+            max-height: 40rem;
+          }
+          .adventure-grid{
+            grid-template-areas:
+                "tavern forest falls keep";
+            grid-template-columns: 0.23fr 0.23fr 0.23fr 0.23fr;
+            grid-template-rows: 1fr;
+            column-gap: 2rem;
+          }
+}
+
+@media (max-width: 1216px){
+  html{
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 1108px){
+  html{
+    font-size: 45%;
+  }
+  .sidebar-container.open{
+    left: 1%;
+  }
+}
+
+@media (max-width: 944px){
+  .sidebar-btn{
+    visibility: hidden;
+  }
+  .sidebar-container{
+    visibility: hidden;
+  }
+  .base-container{
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 530px){
+  main{
+    min-width: 55rem;
+  }
+  .input-row input{
+    width: 81%;
+  }
+  .adventure-grid{
+    display: grid;
+    grid-template-areas:
+        "tavern forest"
+        "falls keep";
+    grid-template-columns: 0.4fr 0.4fr;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 1.5rem;
+    column-gap: 4rem;
+  }
+}
+
+@media (max-width: 415px){
+  main{
+    min-width: 48rem;
+  }
+}
