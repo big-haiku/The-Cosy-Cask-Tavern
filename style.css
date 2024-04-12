@@ -430,7 +430,7 @@ span{
                       height: 3rem;
                     }
                         .list-container li.checked div{
-                          background-image: url(../images/checked.png);
+                          background-image: url(Images/checked.png);
                           filter: hue-rotate(100deg);
                         }
     .compass-symbol{
