@@ -352,6 +352,7 @@ noteContentBox.addEventListener('click', function(e){
 
 //Adventure
 // Function to save the background choice to local storage
+// Function to save the background choice to local storage
 function saveBackgroundChoice(backgroundURL) {
   localStorage.setItem('backgroundURL', backgroundURL);
 }
@@ -365,7 +366,7 @@ function getBackgroundChoice() {
 window.addEventListener('load', function () {
   const savedBackgroundURL = getBackgroundChoice();
   if (savedBackgroundURL) {
-      document.querySelector('.background').src = savedBackgroundURL;
+      document.querySelector('.background').style.backgroundImage = `url(${savedBackgroundURL})`;
   }
 });
 
@@ -373,14 +374,14 @@ let isFunctionExecuting = false; // Flag to track execution status
 
 document.querySelectorAll('.adventure-grid-item').forEach(item => {
   item.addEventListener('click', function (e) {
-      if (!isFunctionExecuting && e.target.tagName === 'DIV') { // Check if the function is not already executing
-          isFunctionExecuting = true; // Set flag to true to indicate that the function is executing
-          
+      if (!isFunctionExecuting && e.target.tagName === 'DIV') {
+          isFunctionExecuting = true;
+
           const backgroundImageURL = window.getComputedStyle(e.target).getPropertyValue('background-image');
-          const imageURL = backgroundImageURL.replace('url("', '').replace('")', ''); // Extract URL from background-image CSS property
+          const imageURL = backgroundImageURL.replace('url("', '').replace('")', '');
           const background = document.querySelector('.background');
 
-          // Apply brightness filter if the imageURL is Images/elvish_falls.gif or remove it if it's not. `.includes` is used to avoid issues with how the browser constructs URL
+          // Apply brightness filter based on the image URL
           if (imageURL.includes('Images/elvish_falls.gif')) {
               background.classList.add('brightness-filter');
           } else {
@@ -391,25 +392,24 @@ document.querySelectorAll('.adventure-grid-item').forEach(item => {
           background.classList.add('fade-out');
           
           setTimeout(() => {
-              // Change background image source
-              background.src = imageURL;
-              saveBackgroundChoice(imageURL); // Save background choice to local storage
-              
+              // Change background image using the style attribute
+              background.style.backgroundImage = `url(${imageURL})`;
+              saveBackgroundChoice(imageURL);
+
               // Fade in effect
               background.classList.remove('fade-out');
               background.classList.add('fade-in');
-              
+
               setTimeout(() => {
-                  // Remove fade-in class after the fade-in effect completes
+                  // Remove fade-in class after the effect completes
                   background.classList.remove('fade-in');
-                  isFunctionExecuting = false; // Set flag back to false to indicate that the function has finished executing
-              }, 500); // Adjust timing to match the CSS transition duration
-          }, 500); // Adjust timing to match the CSS transition duration
-          
-          saveData();
+                  isFunctionExecuting = false;
+              }, 500);
+          }, 500);
       }
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
   const loadingScreen = document.querySelector('.loading-screen');
@@ -435,3 +435,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set a timeout to hide the loading screen after 2 seconds
   setTimeout(hideLoadingScreen, 1000); // 2000 milliseconds = 2 seconds
 });
+
+// Fixing background zoom/orientation issues
+function adjustBackgroundSize() {
+    const background = document.querySelector('.background');
+    // This ensures the background fills the entire viewport
+    background.style.width = `${window.innerWidth}px`;
+    background.style.height = `${window.innerHeight}px`;
+}
+
+// Add event listeners for window resize and orientation change
+window.addEventListener('resize', adjustBackgroundSize);
+window.addEventListener('orientationchange', adjustBackgroundSize);
+
+// Call the function once at the beginning to ensure initial setup
+adjustBackgroundSize();
+
+let lastDevicePixelRatio = window.devicePixelRatio;
+
+function checkZoomChange() {
+    if (window.devicePixelRatio !== lastDevicePixelRatio) {
+        lastDevicePixelRatio = window.devicePixelRatio;
+        adjustBackgroundSize(); // Adjust background size to handle zoom change
+    }
+    requestAnimationFrame(checkZoomChange);
+}
+
+requestAnimationFrame(checkZoomChange);
