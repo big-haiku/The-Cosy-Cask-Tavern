@@ -585,7 +585,7 @@ body {
     .adventure-container{
       grid-area: adventure;
       padding-bottom: 1rem;
-      max-height: 50rem;
+      min-height: 50rem;
     }
         .adventure-grid{
           display: grid;
@@ -602,7 +602,7 @@ body {
           align-items: center;
           overflow-y: auto;
           max-height: 35rem;
-          padding-left: 2rem;
+          padding: 0.8rem 0 1rem 2rem;
           margin-right: 2rem;
         }
         .adventure-grid::-webkit-scrollbar{
@@ -740,13 +740,16 @@ body {
           .note-content-box{
             max-height: 40rem;
           }
-          .adventure-grid{
-            grid-template-areas:
-                "tavern forest falls keep";
-            grid-template-columns: 0.23fr 0.23fr 0.23fr 0.23fr;
-            grid-template-rows: 1fr;
-            column-gap: 2rem;
+          .adventure-container{
+            min-height: auto;
           }
+              .adventure-grid{
+                grid-template-areas:
+                    "tavern forest falls keep";
+                grid-template-columns: 0.23fr 0.23fr 0.23fr 0.23fr;
+                grid-template-rows: 1fr;
+                column-gap: 2rem;
+              }
 }
 
 @media (max-width: 1216px){
