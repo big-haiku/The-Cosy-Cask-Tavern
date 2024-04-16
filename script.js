@@ -462,3 +462,19 @@ function checkZoomChange() {
 }
 
 requestAnimationFrame(checkZoomChange);
+
+// Hide sketchpad on touchscreen
+function hideOnTouchDevice() {
+  console.log('Touch detection check...');
+  
+  const drawContainer = document.querySelector('.draw-container');
+  
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+      console.log('Touch screen detected.');
+      drawContainer.classList.add('concealed');
+  } else {
+      console.log('No touch screen detected.');
+  }
+}
+
+hideOnTouchDevice();
