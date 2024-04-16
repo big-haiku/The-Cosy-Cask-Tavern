@@ -479,12 +479,11 @@ body {
     .concealed {
       margin-bottom: 0;
       padding: 0;  
-      visibility: collapse; /* Use 'hidden' instead of 'collapse' for proper element hiding */
-        /* Add other styles as needed */
+      display: none;
     }
     .draw{
       background: white;
-      height: 27rem;
+      height: 23rem;
       width: 90%;
       border-radius: 3rem;
       margin: 2rem 1rem 0;
@@ -536,7 +535,7 @@ body {
     /* Notes */
     .notes-container{
       grid-area: notes;
-      min-height: 42rem;
+      min-height: 50rem;
     }
       .notes-container button{
         margin-top: 1.5rem;
@@ -552,6 +551,9 @@ body {
             padding-right: 1rem;
             max-height: 67rem;
             overflow-x: hidden;
+          }
+          .note-content-box.restricted{
+            max-height: 32rem;
           }
           .note-content-box::-webkit-scrollbar{
             background: rgba(0, 0, 0, 0.3);
@@ -583,6 +585,7 @@ body {
     .adventure-container{
       grid-area: adventure;
       padding-bottom: 1rem;
+      max-height: 50rem;
     }
         .adventure-grid{
           display: grid;
@@ -597,6 +600,20 @@ body {
           width: 100%;
           justify-content: center;
           align-items: center;
+          overflow-y: auto;
+          max-height: 35rem;
+          padding-left: 2rem;
+          margin-right: 2rem;
+        }
+        .adventure-grid::-webkit-scrollbar{
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 1rem;
+          width: 0.4rem;
+          margin-right: 3rem;
+        }
+        .adventure-grid::-webkit-scrollbar-thumb{
+          border-radius: 0.4rem;
+          background: rgba(248, 248, 248, 0.563);
         }
             .adventure-grid-item{
               display: flex;
@@ -637,9 +654,22 @@ body {
                   background-image: url(Images/elvish_falls.gif);
                 }
             .rainbound-keep{
+              grid-area: keep;
             }
                 .rainbound-keep div{
                   background-image: url(Images/rainbound_keep.gif)
+                }
+                .zakhara-sunset div{
+                  background-image: url(Images/zakhara_sunset.gif)
+                }
+                .land-of-leaves div{
+                  background-image: url(Images/land_of_leaves.gif)
+                }
+                .the-rimewood div{
+                  background-image: url(Images/rimewood.gif)
+                }
+                .quiet-mountain div{
+                  background-image: url(Images/quiet_mountain.gif)
                 }
                 .adventure-grid-item p{
                   font-size: 2.2rem;
@@ -689,7 +719,13 @@ body {
     z-index: -2;
   }
 
+
 /* Responsive Design */
+@media (min-width: 1572px){
+  .grid-container.no-sketch{
+    grid-template-areas: "adventure notes";
+  }
+}
 @media (max-width: 1572px){
   html{
     font-size: 55%;
@@ -737,9 +773,6 @@ body {
   }
   .base-container{
     margin-bottom: 3rem;
-  }
-  .draw-container{
-    margin-bottom: -0.4rem;
   }
 }
 
