@@ -463,18 +463,33 @@ function checkZoomChange() {
 
 requestAnimationFrame(checkZoomChange);
 
-// Hide sketchpad on touchscreen
-function hideOnTouchDevice() {
-  console.log('Touch detection check...');
+// Hide sketchpad on touchscreens
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("DOM content loaded");
   
-  const drawContainer = document.querySelector('.draw-container');
-  
-  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-      console.log('Touch screen detected.');
-      drawContainer.classList.add('concealed');
-  } else {
-      console.log('No touch screen detected.');
-  }
-}
+  hideOnTouchDevice(); // Call the function to hide elements on touch devices
 
-hideOnTouchDevice();
+  // Other scripts go here...
+
+  // Function to hide elements on touch devices
+  function hideOnTouchDevice() {
+    console.log('Touch detection check...');
+    
+    const drawContainer = document.querySelector('.draw-container');
+    const gridContainer = document.querySelector('.grid-container');
+    const noteContent = document.querySelector('.note-content-box');
+    
+    const isTouchDevice = 'ontouchstart' in window || /(iPhone|iPod|iPad|Android|BlackBerry|Windows Phone)/.test(navigator.userAgent);
+    
+    console.log('isTouchDevice:', isTouchDevice);
+    
+    if (isTouchDevice) {
+        console.log('Touch screen detected.');
+        drawContainer.classList.add('concealed');
+        gridContainer.classList.add('no-sketch');
+        noteContent.classList.add('restricted');
+    } else {
+        console.log('No touch screen detected.');
+    }
+}
+});
